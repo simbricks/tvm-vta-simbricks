@@ -1,5 +1,7 @@
 -include Makefile.local
 
+SIMBRICKS_LIB ?= $(abspath ../../../../lib)
+
 bin_vta := vta_simbricks
 
 verilator_dir := obj_dir
@@ -8,9 +10,9 @@ verilator_src := $(verilator_dir)/VVTAShell.cc
 srcs := vta_simbricks.cc
 vsrcs := ../build/chisel/VTA.DefaultVTAConfig.sv
 VERILATOR ?= verilator
-CFLAGS := -DVTA_SIMBRICKS -I$(abspath ../../../../lib) -Wall -O2 -fno-omit-frame-pointer
+CFLAGS := -DVTA_SIMBRICKS -I$(SIMBRICKS_LIB) -Wall -O2 -fno-omit-frame-pointer
 CFLAGS += -std=c++17
-LDFLAGS := -L$(abspath ../../../../lib/simbricks/nicif) -L$(abspath ../../../../lib)
+LDFLAGS := -L$(SIMBRICKS_LIB)/simbricks/nicif -L$(SIMBRICKS_LIB)
 VFLAGS := --cc -O3 --trace
 VFLAGS += +define+RANDOMIZE_GARBAGE_ASSIGN
 VFLAGS += +define+RANDOMIZE_REG_INIT
