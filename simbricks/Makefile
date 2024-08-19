@@ -42,5 +42,5 @@ $(bin_vta): $(srcs) $(vsrcs) $(verilator_src)
 $(vsrcs):
 	$(MAKE) -C ../hardware/chisel/ verilog CONFIG=DefaultVTAConfig
 clean:
-	rm -rf $(verilator_dir) ../build
+	rm -rf $(bin_vta) $(verilator_dir) ../build
 .PHONY: all clean
